@@ -1,0 +1,11 @@
+version: 2 # use CircleCI 2.0
+jobs:
+  build:
+    docker:
+      - image: python:latest
+    steps:
+      - checkout
+      - run: pip install --upgrade pep8 requests build
+      - run: pep8 --max-line-length=150 asknicely/sdk.py
+      - run: python3 asknicely/sdk.py -v
+      - run: python -m build
