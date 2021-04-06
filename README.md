@@ -54,7 +54,7 @@ asknicely.get_sent_stats("30", "10", "1")
 asknicely.get_unsubscribed()
 asknicely.remove_person("fakeuser@example.com")
 asknicely.send_survey("fakeuser@example.com", "Fake User", False)
-asknicely.send_survey_bulk(users)
+asknicely.send_survey_bulk([ { "name": "Test User1", "email": "test1@example.com"}, { "name": "Test User2", "email": "test2@example.com"} ])
 ```
 
 For supported arguments see the [code](asknicely/sdk.py).
