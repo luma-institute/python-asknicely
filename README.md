@@ -1,6 +1,6 @@
 # python-asknicely
 
-[![CircleCI](https://circleci.com/github/luma-institute/python-asknicely.svg?style=svg)](https://circleci.com/github/luma-institute/python-asknicely/)
+[![CircleCI](https://circleci.com/gh/luma-institute/python-asknicely.svg?style=svg)](https://circleci.com/gh/luma-institute/python-asknicely/)
 
 Simple sdk for interacting with [AskNicely](https://www.asknicely.com) API services. Supports the following actions:
 
