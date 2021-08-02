@@ -129,7 +129,7 @@ class AskNicely(object):
         for user in users:
             user.update({"obeyrules": self.bool_stringify(obeyrules)})
             user.update({"triggeremail": self.bool_stringify(triggeremail)})
-        data = {"people": [user for user in users]}
+        data = {"contacts": [user for user in users]}
         response = requests.post(url, data=json.dumps(data), headers=headers)
         return response.json()
 
@@ -144,7 +144,7 @@ class AskNicely(object):
         """
         url = self.url_generator_no_args("contacts/add", False)
         headers = {'X-apikey': self.api_key}
-        data = {"people": [{"name": name, "email": email}]}
+        data = {"contacts": [{"name": name, "email": email}]}
         response = requests.post(url, data=json.dumps(data), headers=headers)
         return response.json()
 
