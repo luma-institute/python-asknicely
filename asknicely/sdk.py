@@ -93,7 +93,7 @@ class AskNicely(object):
         >>> request["success"]
         True
         """
-        url = self.url_generator_no_args("person/trigger", False)
+        url = self.url_generator_no_args("contact/trigger", False)
 
         data = {"email": email,
                 "name": name,
@@ -124,12 +124,12 @@ class AskNicely(object):
         True
         """
 
-        url = self.url_generator_no_args("person/add", False)
+        url = self.url_generator_no_args("contacts/add", False)
         headers = {'X-apikey': self.api_key}
         for user in users:
             user.update({"obeyrules": self.bool_stringify(obeyrules)})
             user.update({"triggeremail": self.bool_stringify(triggeremail)})
-        data = {"people": [user for user in users]}
+        data = {"contacts": [user for user in users]}
         response = requests.post(url, data=json.dumps(data), headers=headers)
         return response.json()
 
@@ -142,9 +142,9 @@ class AskNicely(object):
         >>> request["success"]
         True
         """
-        url = self.url_generator_no_args("person/add", False)
+        url = self.url_generator_no_args("contacts/add", False)
         headers = {'X-apikey': self.api_key}
-        data = {"people": [{"name": name, "email": email}]}
+        data = {"contacts": [{"name": name, "email": email}]}
         response = requests.post(url, data=json.dumps(data), headers=headers)
         return response.json()
 
@@ -160,7 +160,7 @@ class AskNicely(object):
         >>> request["success"]
         True
         """
-        response = requests.get(self.url_generator("person/get", search, key))
+        response = requests.get(self.url_generator("contact/get", search, key))
         return response.json()
 
     def remove_person(self, search, key="email") -> dict:
@@ -175,7 +175,7 @@ class AskNicely(object):
         """
         response = requests.get(
             self.url_generator(
-                "person/remove", search, key))
+                "contact/remove", search, key))
         return response.json()
 
     def delete_person(self, email, notify=1) -> dict:
@@ -204,7 +204,7 @@ class AskNicely(object):
         True
         """
         response = requests.get(
-            self.url_generator_no_args("person/unsubscribed"))
+            self.url_generator_no_args("contacts/unsubscribed"))
         return response.json()
 
     def get_nps(self) -> dict:
