@@ -42,7 +42,8 @@ class AskNicely(object):
             format="json",
             filter="answered",
             sort_by="sent",
-            end_time=0) -> dict:
+            end_time=0,
+            max_redirects=100) -> dict:
         """
         Gets NPS responses from AskNicely
         >>> thirty_days_ago = (datetime.date.today() - datetime.timedelta(30)).strftime("%s")
@@ -58,7 +59,11 @@ class AskNicely(object):
         >>> request["success"]
         True
         """
-        response = requests.get(
+
+        session = requests.Session()
+        session.max_redirects = max_redirects
+
+        response = session.get(
             self.url_generator(
                 "responses",
                 sort_direction,
